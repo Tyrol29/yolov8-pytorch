@@ -1,55 +1,26 @@
-## YOLOV8：You Only Look Once目标检测模型在pytorch当中的实现
+YOLOV8：You Only Look Once目标检测模型在pytorch当中的实现
 ---
 
-## 目录
-1. [仓库更新 Top News](#仓库更新)
-2. [相关仓库 Related code](#相关仓库)
-3. [性能情况 Performance](#性能情况)
-4. [所需环境 Environment](#所需环境)
-5. [文件下载 Download](#文件下载)
-6. [训练步骤 How2train](#训练步骤)
-7. [预测步骤 How2predict](#预测步骤)
-8. [评估步骤 How2eval](#评估步骤)
-9. [参考资料 Reference](#Reference)
-
-## Top News
-**`2023-03`**:**仓库创建，支持step、cos学习率下降法、支持adam、sgd优化器选择、支持学习率根据batch_size自适应调整、新增图片裁剪、支持多GPU训练、支持各个种类目标数量计算、支持heatmap、支持EMA。**  
-
-## 相关仓库
-| 模型 | 路径 |
-| :----- | :----- |
-YoloV3 | https://github.com/bubbliiiing/yolo3-pytorch  
-Efficientnet-Yolo3 | https://github.com/bubbliiiing/efficientnet-yolo3-pytorch  
-YoloV4 | https://github.com/bubbliiiing/yolov4-pytorch
-YoloV4-tiny | https://github.com/bubbliiiing/yolov4-tiny-pytorch
-Mobilenet-Yolov4 | https://github.com/bubbliiiing/mobilenet-yolov4-pytorch
-YoloV5-V5.0 | https://github.com/bubbliiiing/yolov5-pytorch
-YoloV5-V6.1 | https://github.com/bubbliiiing/yolov5-v6.1-pytorch
-YoloX | https://github.com/bubbliiiing/yolox-pytorch
-YoloV7 | https://github.com/bubbliiiing/yolov7-pytorch
-YoloV7-tiny | https://github.com/bubbliiiing/yolov7-tiny-pytorch
-
 ## 性能情况
-| 训练数据集 | 权值文件名称 | 测试数据集 | 输入图片大小 | mAP 0.5:0.95 | mAP 0.5 |
-| :-----: | :-----: | :------: | :------: | :------: | :-----: |
-| COCO-Train2017 | [yolov8_n.pth](https://github.com/bubbliiiing/yolov8-pytorch/releases/download/v1.0/yolov8_n.pth) | COCO-Val2017 | 640x640 | 36.7 | 52.1
-| COCO-Train2017 | [yolov8_s.pth](https://github.com/bubbliiiing/yolov8-pytorch/releases/download/v1.0/yolov8_s.pth) | COCO-Val2017 | 640x640 | 44.1 | 61.0
-| COCO-Train2017 | [yolov8_m.pth](https://github.com/bubbliiiing/yolov8-pytorch/releases/download/v1.0/yolov8_m.pth) | COCO-Val2017 | 640x640 | 49.3 | 66.3
-| COCO-Train2017 | [yolov8_l.pth](https://github.com/bubbliiiing/yolov8-pytorch/releases/download/v1.0/yolov8_l.pth) | COCO-Val2017 | 640x640 | 52.0 | 68.9
-| COCO-Train2017 | [yolov8_x.pth](https://github.com/bubbliiiing/yolov8-pytorch/releases/download/v1.0/yolov8_x.pth) | COCO-Val2017 | 640x640 | 52.9 | 69.9
+| 训练数据集 |    权值文件名称     | 测试数据集 | 输入图片大小 | mAP 0.5:0.95 | mAP 0.5 |
+| :-----: |:-------------:| :------: | :------: | :------: | :-----: |
+| COCO-Train2017 | yolov8_n.pth  | COCO-Val2017 | 640x640 | 36.7 | 52.1
+| COCO-Train2017 | yolov8_s.pth  | COCO-Val2017 | 640x640 | 44.1 | 61.0
+| COCO-Train2017 | yolov8_m.pth  | COCO-Val2017 | 640x640 | 49.3 | 66.3
+| COCO-Train2017 | yolov8_l.pth  | COCO-Val2017 | 640x640 | 52.0 | 68.9
+| COCO-Train2017 | yolov8_x.pth  | COCO-Val2017 | 640x640 | 52.9 | 69.9
 
 ## 所需环境
-torch==1.2.0    
-为了使用amp混合精度，推荐使用torch1.7.1以上的版本。
+参考requirements.txt
 
 ## 文件下载
 训练所需的权值可在百度网盘中下载。  
-链接: https://pan.baidu.com/s/1-khkEUiH-J3YJHVaYuuVbw      
-提取码: ss9t     
+链接：https://pan.baidu.com/s/1kJTRrRDp7s1h40ERXzPqWg 
+提取码：gwnl
 
 VOC数据集下载地址如下，里面已经包括了训练集、测试集、验证集（与测试集一样），无需再次划分：  
-链接: https://pan.baidu.com/s/19Mw2u_df_nBzsC2lg20fQA    
-提取码: j5ge   
+链接：https://pan.baidu.com/s/1JFW4sSfgJ3UZvxf7muix6A 
+提取码：iykh
 
 ## 训练步骤
 ### a、训练VOC07+12数据集
